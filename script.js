@@ -50,22 +50,18 @@ function initTiltCards() {
     });
   });
 }
-
 initTiltCards();
 
 const counters = document.querySelectorAll("[data-count]");
 const counterObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (!entry.isIntersecting) return;
-
     const element = entry.target;
     const target = parseFloat(element.dataset.count);
     let current = 0;
     const step = target / 70;
-
     const timer = setInterval(() => {
       current += step;
-
       if (current >= target) {
         element.textContent = target % 1 === 0 ? target.toLocaleString("de-DE") + "+" : target.toFixed(1) + "★";
         clearInterval(timer);
@@ -73,11 +69,9 @@ const counterObserver = new IntersectionObserver((entries) => {
         element.textContent = target % 1 === 0 ? Math.floor(current).toLocaleString("de-DE") : current.toFixed(1);
       }
     }, 18);
-
     counterObserver.unobserve(element);
   });
 }, { threshold: 0.45 });
-
 counters.forEach((counter) => counterObserver.observe(counter));
 
 const premiumMenuData = {
@@ -120,7 +114,6 @@ function addMenuGlow() {
 
 function renderPremiumMenu(category) {
   menuGrid.classList.add("menu-changing");
-
   setTimeout(() => {
     menuGrid.innerHTML = premiumMenuData[category].map(item => `
       <article class="premium-menu-card tilt-card">
@@ -135,7 +128,6 @@ function renderPremiumMenu(category) {
         </div>
       </article>
     `).join("");
-
     addMenuGlow();
     initTiltCards();
     menuGrid.classList.remove("menu-changing");
@@ -149,5 +141,47 @@ premiumTabs.forEach(tab => {
     renderPremiumMenu(tab.dataset.category);
   });
 });
-
 renderPremiumMenu("starter");
+
+const galleryButtons = document.querySelectorAll(".gallery-filter-btn");
+const galleryTiles = document.querySelectorAll(".gallery-tile");
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxTitle = document.getElementById("lightboxTitle");
+const lightboxClose = document.getElementById("lightboxClose");
+
+galleryButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    galleryButtons.forEach(item => item.classList.remove("active"));
+    button.classList.add("active");
+
+    const filter = button.dataset.filter;
+    galleryTiles.forEach(tile => {
+      const match = filter === "all" || tile.dataset.category === filter;
+      tile.classList.toggle("hidden", !match);
+    });
+  });
+});
+
+galleryTiles.forEach(tile => {
+  tile.addEventListener("click", () => {
+    lightboxImage.src = tile.dataset.img;
+    lightboxTitle.textContent = tile.dataset.title;
+    lightbox.classList.add("active");
+    lightbox.setAttribute("aria-hidden", "false");
+  });
+});
+
+function closeLightbox() {
+  lightbox.classList.remove("active");
+  lightbox.setAttribute("aria-hidden", "true");
+}
+
+lightboxClose.addEventListener("click", closeLightbox);
+lightbox.addEventListener("click", (event) => {
+  if (event.target === lightbox) closeLightbox();
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeLightbox();
+});
