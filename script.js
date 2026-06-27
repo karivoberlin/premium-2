@@ -2,6 +2,7 @@ const cursorGlow = document.getElementById("cursorGlow");
 const header = document.getElementById("premiumHeader");
 const menuButton = document.getElementById("menuButton");
 const premiumNav = document.getElementById("premiumNav");
+const heroParallax = document.getElementById("heroParallax");
 
 window.addEventListener("mousemove", (event) => {
   cursorGlow.style.left = event.clientX + "px";
@@ -9,7 +10,9 @@ window.addEventListener("mousemove", (event) => {
 });
 
 window.addEventListener("scroll", () => {
-  header.classList.toggle("scrolled", window.scrollY > 80);
+  const scrollY = window.scrollY;
+  header.classList.toggle("scrolled", scrollY > 80);
+  heroParallax.style.transform = `scale(1.08) translateY(${scrollY * 0.08}px)`;
 });
 
 menuButton.addEventListener("click", () => {
