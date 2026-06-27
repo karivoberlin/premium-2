@@ -48,3 +48,30 @@ document.querySelectorAll(".tilt-card").forEach((card) => {
     card.style.transform = "";
   });
 });
+
+const counters = document.querySelectorAll("[data-count]");
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+
+    const element = entry.target;
+    const target = parseFloat(element.dataset.count);
+    let current = 0;
+    const step = target / 70;
+
+    const timer = setInterval(() => {
+      current += step;
+
+      if (current >= target) {
+        element.textContent = target % 1 === 0 ? target.toLocaleString("de-DE") + "+" : target.toFixed(1) + "★";
+        clearInterval(timer);
+      } else {
+        element.textContent = target % 1 === 0 ? Math.floor(current).toLocaleString("de-DE") : current.toFixed(1);
+      }
+    }, 18);
+
+    counterObserver.unobserve(element);
+  });
+}, { threshold: 0.45 });
+
+counters.forEach((counter) => counterObserver.observe(counter));
