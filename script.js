@@ -34,20 +34,24 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 reveals.forEach((element) => revealObserver.observe(element));
 
-document.querySelectorAll(".tilt-card").forEach((card) => {
-  card.addEventListener("mousemove", (event) => {
-    const rect = card.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
-    const rotateY = ((x / rect.width) - 0.5) * 10;
-    const rotateX = ((y / rect.height) - 0.5) * -10;
-    card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
-  });
+function initTiltCards() {
+  document.querySelectorAll(".tilt-card").forEach((card) => {
+    card.addEventListener("mousemove", (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      const rotateY = ((x / rect.width) - 0.5) * 10;
+      const rotateX = ((y / rect.height) - 0.5) * -10;
+      card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+    });
 
-  card.addEventListener("mouseleave", () => {
-    card.style.transform = "";
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "";
+    });
   });
-});
+}
+
+initTiltCards();
 
 const counters = document.querySelectorAll("[data-count]");
 const counterObserver = new IntersectionObserver((entries) => {
@@ -75,3 +79,75 @@ const counterObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.45 });
 
 counters.forEach((counter) => counterObserver.observe(counter));
+
+const premiumMenuData = {
+  starter: [
+    { icon: "🥂", name: "Aperitif Moment", desc: "Feiner Gruß aus der Küche mit saisonalen Akzenten.", price: "9,90 €", tag: "Signature" },
+    { icon: "🦪", name: "Sea Starter", desc: "Frische Meeresnoten, Zitrus und Kräuteröl.", price: "16,90 €", tag: "Fresh" },
+    { icon: "🥗", name: "Golden Salad", desc: "Blattsalate, karamellisierte Nüsse, Dressing und Parmesan.", price: "12,90 €", tag: "Light" }
+  ],
+  main: [
+    { icon: "🍝", name: "Trüffel Pasta", desc: "Hausgemachte Pasta mit Trüffelcreme und Parmesan.", price: "24,90 €", tag: "Chef" },
+    { icon: "🥩", name: "Filet Royal", desc: "Rinderfilet, Jus, Gemüse und Kartoffelvariation.", price: "34,90 €", tag: "Premium" },
+    { icon: "🐟", name: "Lachs Signature", desc: "Gebratener Lachs mit Zitronenbutter und Marktgemüse.", price: "27,90 €", tag: "Elegant" }
+  ],
+  dessert: [
+    { icon: "🍫", name: "Chocolate Gold", desc: "Warmer Schokoladenkern, Vanille und Beeren.", price: "10,90 €", tag: "Sweet" },
+    { icon: "🍓", name: "Berry Panna Cotta", desc: "Cremig, frisch und mit Minze serviert.", price: "8,90 €", tag: "Classic" },
+    { icon: "🍨", name: "Sorbet Selection", desc: "Leichtes Sorbet mit fruchtigen Noten.", price: "7,90 €", tag: "Fresh" }
+  ],
+  drinks: [
+    { icon: "🍷", name: "Wine Pairing", desc: "Ausgewählte Begleitung zu Signature Gerichten.", price: "ab 19 €", tag: "Pairing" },
+    { icon: "🍸", name: "Golden Aperitif", desc: "Spritzig, elegant und perfekt zum Start.", price: "9,90 €", tag: "Bar" },
+    { icon: "☕", name: "Espresso Ritual", desc: "Kräftig, aromatisch und stilvoll serviert.", price: "3,50 €", tag: "Finish" }
+  ]
+};
+
+const menuGrid = document.getElementById("premiumMenuGrid");
+const premiumTabs = document.querySelectorAll(".premium-tab");
+
+function addMenuGlow() {
+  document.querySelectorAll(".premium-menu-card").forEach(card => {
+    card.addEventListener("mousemove", (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width) * 100;
+      const y = ((event.clientY - rect.top) / rect.height) * 100;
+      card.style.setProperty("--x", `${x}%`);
+      card.style.setProperty("--y", `${y}%`);
+    });
+  });
+}
+
+function renderPremiumMenu(category) {
+  menuGrid.classList.add("menu-changing");
+
+  setTimeout(() => {
+    menuGrid.innerHTML = premiumMenuData[category].map(item => `
+      <article class="premium-menu-card tilt-card">
+        <div>
+          <div class="food-icon">${item.icon}</div>
+          <h3>${item.name}</h3>
+          <p>${item.desc}</p>
+        </div>
+        <div class="food-footer">
+          <span>${item.tag}</span>
+          <strong>${item.price}</strong>
+        </div>
+      </article>
+    `).join("");
+
+    addMenuGlow();
+    initTiltCards();
+    menuGrid.classList.remove("menu-changing");
+  }, 180);
+}
+
+premiumTabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    premiumTabs.forEach(item => item.classList.remove("active"));
+    tab.classList.add("active");
+    renderPremiumMenu(tab.dataset.category);
+  });
+});
+
+renderPremiumMenu("starter");
