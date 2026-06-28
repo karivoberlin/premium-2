@@ -3,14 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Restaurant Premium V5 | Galerie</title>
-  <meta name="description" content="Premium Restaurant Website V5 mit Masonry Galerie, Lightbox, Zoom Effekten, großen Premium-Bildern und luxuriöser Bildpräsentation." />
-
+  <title>Restaurant Premium V6 | Bewertungen</title>
+  <meta name="description" content="Premium Restaurant Website V6 mit Google-Style Bewertungen, Review Slider, Trust Section, animierten Countern und Social Proof." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -33,6 +30,7 @@
       <a href="#about">Über uns</a>
       <a href="#menu">Menü</a>
       <a href="#gallery">Galerie</a>
+      <a href="#reviews">Bewertungen</a>
       <a href="#contact">Kontakt</a>
     </nav>
 
@@ -48,10 +46,8 @@
     <section class="hero-premium" id="start">
       <div class="hero-video-placeholder" id="heroParallax"></div>
       <div class="hero-gradient"></div>
-
       <div class="light-beam beam-one"></div>
       <div class="light-beam beam-two"></div>
-
       <div class="floating-shape shape-one"></div>
       <div class="floating-shape shape-two"></div>
       <div class="floating-shape shape-three"></div>
@@ -59,22 +55,22 @@
 
       <div class="container hero-inner">
         <div class="hero-left reveal">
-          <p class="overline">Premium Galerie</p>
+          <p class="overline">Premium Reviews</p>
           <h1>Fine Dining, inszeniert wie ein Luxusfilm.</h1>
           <p class="hero-text">
-            V5 ergänzt eine hochwertige Galerie: Masonry Layout, Lightbox,
-            Zoom Effekte und große Bildflächen für Essen, Ambiente und Details.
+            V6 ergänzt Social Proof: Google-Style Bewertungen, automatischer Review-Slider,
+            Trust Section und animierte Kennzahlen.
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-gold" href="#gallery">Galerie ansehen</a>
-            <a class="btn btn-ghost" href="#menu">Menü ansehen</a>
+            <a class="btn btn-gold" href="#reviews">Bewertungen ansehen</a>
+            <a class="btn btn-ghost" href="#contact">Tisch reservieren</a>
           </div>
 
           <div class="premium-proof">
             <div><strong>4.9</strong><span>Google Style Rating</span></div>
-            <div><strong>15+</strong><span>Jahre Erfahrung</span></div>
-            <div><strong>Chef</strong><span>Signature Menu</span></div>
+            <div><strong>500+</strong><span>Bewertungen</span></div>
+            <div><strong>98%</strong><span>Weiterempfehlung</span></div>
           </div>
         </div>
 
@@ -113,10 +109,7 @@
         <div class="about-story reveal">
           <p class="overline">Über uns</p>
           <h2>Eine Geschichte aus Geschmack, Handwerk und Atmosphäre.</h2>
-          <p>
-            Dieser Premium-Bereich ist dafür gebaut, ein Restaurant wie eine hochwertige Marke
-            wirken zu lassen.
-          </p>
+          <p>Dieser Premium-Bereich ist dafür gebaut, ein Restaurant wie eine hochwertige Marke wirken zu lassen.</p>
           <div class="about-signature">
             <span>Chef Signature</span>
             <strong>„Jedes Gericht soll einen Moment schaffen, an den man sich erinnert.“</strong>
@@ -156,7 +149,7 @@
 
           <div class="menu-control">
             <p class="overline">Kategorien</p>
-            <div class="premium-tabs" role="tablist" aria-label="Premium Speisekarte">
+            <div class="premium-tabs">
               <button class="premium-tab active" data-category="starter">Starter</button>
               <button class="premium-tab" data-category="main">Main Course</button>
               <button class="premium-tab" data-category="dessert">Dessert</button>
@@ -174,10 +167,7 @@
         <div class="section-heading reveal">
           <p class="overline">Galerie</p>
           <h2>Bilder, die das Restaurant verkaufen.</h2>
-          <p>
-            Premium braucht starke Bildwirkung. Diese Galerie ist für echte Kundenbilder vorbereitet:
-            Essen, Innenbereich, Außenbereich, Bar und Details.
-          </p>
+          <p>Premium Galerie mit Filter, Masonry Layout und Lightbox.</p>
         </div>
 
         <div class="gallery-filter reveal">
@@ -188,41 +178,89 @@
         </div>
 
         <div class="masonry-gallery reveal" id="masonryGallery">
-          <button class="gallery-tile tile-large" data-category="interior" data-title="Eleganter Innenbereich" data-img="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=85">
-            <span>Innenbereich</span>
-          </button>
-          <button class="gallery-tile" data-category="food" data-title="Signature Dish" data-img="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=1600&q=85">
-            <span>Signature Dish</span>
-          </button>
-          <button class="gallery-tile tile-tall" data-category="detail" data-title="Bar Detail" data-img="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1600&q=85">
-            <span>Bar Detail</span>
-          </button>
-          <button class="gallery-tile" data-category="food" data-title="Dessert Moment" data-img="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=1600&q=85">
-            <span>Dessert</span>
-          </button>
-          <button class="gallery-tile tile-wide" data-category="interior" data-title="Private Dining" data-img="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1600&q=85">
-            <span>Private Dining</span>
-          </button>
-          <button class="gallery-tile" data-category="detail" data-title="Fine Dining Detail" data-img="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1600&q=85">
-            <span>Details</span>
-          </button>
+          <button class="gallery-tile tile-large" data-category="interior" data-title="Eleganter Innenbereich" data-img="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=85"><span>Innenbereich</span></button>
+          <button class="gallery-tile" data-category="food" data-title="Signature Dish" data-img="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=1600&q=85"><span>Signature Dish</span></button>
+          <button class="gallery-tile tile-tall" data-category="detail" data-title="Bar Detail" data-img="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1600&q=85"><span>Bar Detail</span></button>
+          <button class="gallery-tile" data-category="food" data-title="Dessert Moment" data-img="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=1600&q=85"><span>Dessert</span></button>
+          <button class="gallery-tile tile-wide" data-category="interior" data-title="Private Dining" data-img="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1600&q=85"><span>Private Dining</span></button>
+          <button class="gallery-tile" data-category="detail" data-title="Fine Dining Detail" data-img="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1600&q=85"><span>Details</span></button>
         </div>
       </div>
     </section>
 
-    <section class="section visual-cta">
-      <div class="container visual-cta-box reveal">
-        <p class="overline">Premium Visuals</p>
-        <h2>Ein Kunde soll denken: Genau so soll mein Restaurant online aussehen.</h2>
-        <p>In V6 bauen wir Bewertungen, Google-Style Reviews, Slider und Trust Section.</p>
+    <section class="section reviews-section" id="reviews">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="overline">Bewertungen</p>
+          <h2>Vertrauen, bevor der Gast reserviert.</h2>
+          <p>
+            Premium-Websites brauchen Social Proof. Dieser Bereich zeigt Bewertungen im hochwertigen
+            Google-Style mit Slider, Profilbildern und Trust-Kennzahlen.
+          </p>
+        </div>
+
+        <div class="trust-grid reveal">
+          <div class="trust-card">
+            <strong data-count="4.9">0</strong>
+            <span>Durchschnittliche Bewertung</span>
+          </div>
+          <div class="trust-card">
+            <strong data-count="527">0</strong>
+            <span>Bewertungen</span>
+          </div>
+          <div class="trust-card">
+            <strong data-count="98">0</strong>
+            <span>Weiterempfehlung</span>
+          </div>
+        </div>
+
+        <div class="review-stage reveal">
+          <button class="review-arrow" id="prevReview" aria-label="Vorherige Bewertung">‹</button>
+
+          <article class="review-card tilt-card" id="reviewCard">
+            <div class="review-top">
+              <div class="review-avatar" id="reviewAvatar">M</div>
+              <div>
+                <h3 id="reviewName">Max Mustermann</h3>
+                <span>Google Bewertung · vor 2 Wochen</span>
+              </div>
+            </div>
+
+            <div class="review-stars">★★★★★</div>
+            <p id="reviewText">
+              “Ein außergewöhnlicher Abend. Das Ambiente, der Service und das Essen wirkten
+              auf einem sehr hohen Niveau. Genau so stellt man sich Fine Dining vor.”
+            </p>
+          </article>
+
+          <button class="review-arrow" id="nextReview" aria-label="Nächste Bewertung">›</button>
+        </div>
+
+        <div class="review-dots" id="reviewDots"></div>
+      </div>
+    </section>
+
+    <section class="section trust-section">
+      <div class="container trust-box reveal">
+        <div>
+          <p class="overline">Trust Section</p>
+          <h2>Der Bereich, der Besucher zur Reservierung bringt.</h2>
+          <p>Hier können später echte Google-Bewertungen, Auszeichnungen oder Pressezitate platziert werden.</p>
+        </div>
+
+        <div class="trust-logos">
+          <span>Google Reviews</span>
+          <span>Local Guide</span>
+          <span>Fine Dining</span>
+        </div>
       </div>
     </section>
 
     <section class="section contact-premium" id="contact">
       <div class="container contact-premium-card reveal">
         <p class="overline">Kontakt</p>
-        <h2>Premium Reservierung kommt später.</h2>
-        <p>Diese Version erweitert die Website mit einer luxuriösen Galerie.</p>
+        <h2>Premium Reservierung kommt in V7.</h2>
+        <p>Diese Version ergänzt Bewertungen, Review Slider und Trust Section.</p>
         <a class="btn btn-gold" href="mailto:kontakt@restaurant.de">Kontakt aufnehmen</a>
       </div>
     </section>
@@ -232,7 +270,7 @@
     <div class="container footer-inner">
       <div>
         <strong>Restaurant Name</strong>
-        <p>Karivo Restaurant Premium Vorlage — V5 Galerie.</p>
+        <p>Karivo Restaurant Premium Vorlage — V6 Bewertungen.</p>
       </div>
 
       <div>

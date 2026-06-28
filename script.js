@@ -15,10 +15,7 @@ window.addEventListener("scroll", () => {
   heroParallax.style.transform = `scale(1.08) translateY(${scrollY * 0.08}px)`;
 });
 
-menuButton.addEventListener("click", () => {
-  premiumNav.classList.toggle("open");
-});
-
+menuButton.addEventListener("click", () => premiumNav.classList.toggle("open"));
 document.querySelectorAll(".premium-nav a").forEach((link) => {
   link.addEventListener("click", () => premiumNav.classList.remove("open"));
 });
@@ -26,12 +23,9 @@ document.querySelectorAll(".premium-nav a").forEach((link) => {
 const reveals = document.querySelectorAll(".reveal");
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry, index) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add("visible"), index * 80);
-    }
+    if (entry.isIntersecting) setTimeout(() => entry.target.classList.add("visible"), index * 80);
   });
 }, { threshold: 0.15 });
-
 reveals.forEach((element) => revealObserver.observe(element));
 
 function initTiltCards() {
@@ -44,10 +38,7 @@ function initTiltCards() {
       const rotateX = ((y / rect.height) - 0.5) * -10;
       card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
     });
-
-    card.addEventListener("mouseleave", () => {
-      card.style.transform = "";
-    });
+    card.addEventListener("mouseleave", () => card.style.transform = "");
   });
 }
 initTiltCards();
@@ -63,7 +54,7 @@ const counterObserver = new IntersectionObserver((entries) => {
     const timer = setInterval(() => {
       current += step;
       if (current >= target) {
-        element.textContent = target % 1 === 0 ? target.toLocaleString("de-DE") + "+" : target.toFixed(1) + "★";
+        element.textContent = target % 1 === 0 ? target.toLocaleString("de-DE") + (target > 90 ? "%" : "+") : target.toFixed(1) + "★";
         clearInterval(timer);
       } else {
         element.textContent = target % 1 === 0 ? Math.floor(current).toLocaleString("de-DE") : current.toFixed(1);
@@ -117,15 +108,8 @@ function renderPremiumMenu(category) {
   setTimeout(() => {
     menuGrid.innerHTML = premiumMenuData[category].map(item => `
       <article class="premium-menu-card tilt-card">
-        <div>
-          <div class="food-icon">${item.icon}</div>
-          <h3>${item.name}</h3>
-          <p>${item.desc}</p>
-        </div>
-        <div class="food-footer">
-          <span>${item.tag}</span>
-          <strong>${item.price}</strong>
-        </div>
+        <div><div class="food-icon">${item.icon}</div><h3>${item.name}</h3><p>${item.desc}</p></div>
+        <div class="food-footer"><span>${item.tag}</span><strong>${item.price}</strong></div>
       </article>
     `).join("");
     addMenuGlow();
@@ -154,7 +138,6 @@ galleryButtons.forEach(button => {
   button.addEventListener("click", () => {
     galleryButtons.forEach(item => item.classList.remove("active"));
     button.classList.add("active");
-
     const filter = button.dataset.filter;
     galleryTiles.forEach(tile => {
       const match = filter === "all" || tile.dataset.category === filter;
@@ -176,12 +159,58 @@ function closeLightbox() {
   lightbox.classList.remove("active");
   lightbox.setAttribute("aria-hidden", "true");
 }
-
 lightboxClose.addEventListener("click", closeLightbox);
-lightbox.addEventListener("click", (event) => {
-  if (event.target === lightbox) closeLightbox();
-});
+lightbox.addEventListener("click", (event) => { if (event.target === lightbox) closeLightbox(); });
+document.addEventListener("keydown", (event) => { if (event.key === "Escape") closeLightbox(); });
 
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") closeLightbox();
-});
+const reviews = [
+  { avatar: "M", name: "Max Mustermann", text: "“Ein außergewöhnlicher Abend. Das Ambiente, der Service und das Essen wirkten auf einem sehr hohen Niveau. Genau so stellt man sich Fine Dining vor.”" },
+  { avatar: "S", name: "Sarah Beispiel", text: "“Schon beim Betreten fühlt sich alles hochwertig an. Die Gerichte waren perfekt angerichtet und der Service war aufmerksam.”" },
+  { avatar: "L", name: "Leon Gast", text: "“Die Website sollte genau dieses Gefühl vermitteln: elegant, vertrauenswürdig und besonders. Wir kommen sehr gerne wieder.”" }
+];
+
+let reviewIndex = 0;
+const reviewCard = document.getElementById("reviewCard");
+const reviewAvatar = document.getElementById("reviewAvatar");
+const reviewName = document.getElementById("reviewName");
+const reviewText = document.getElementById("reviewText");
+const prevReview = document.getElementById("prevReview");
+const nextReview = document.getElementById("nextReview");
+const reviewDots = document.getElementById("reviewDots");
+
+function renderDots() {
+  reviewDots.innerHTML = reviews.map((_, index) => `<button class="${index === reviewIndex ? "active" : ""}" data-index="${index}" aria-label="Bewertung ${index + 1}"></button>`).join("");
+  reviewDots.querySelectorAll("button").forEach(button => {
+    button.addEventListener("click", () => {
+      reviewIndex = Number(button.dataset.index);
+      renderReview();
+    });
+  });
+}
+
+function renderReview() {
+  reviewCard.classList.add("fade");
+  setTimeout(() => {
+    const review = reviews[reviewIndex];
+    reviewAvatar.textContent = review.avatar;
+    reviewName.textContent = review.name;
+    reviewText.textContent = review.text;
+    reviewCard.classList.remove("fade");
+    renderDots();
+  }, 220);
+}
+
+function next() {
+  reviewIndex = (reviewIndex + 1) % reviews.length;
+  renderReview();
+}
+
+function prev() {
+  reviewIndex = (reviewIndex - 1 + reviews.length) % reviews.length;
+  renderReview();
+}
+
+nextReview.addEventListener("click", next);
+prevReview.addEventListener("click", prev);
+renderDots();
+setInterval(next, 5200);
