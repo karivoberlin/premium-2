@@ -63,12 +63,10 @@ backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "s
 if (localStorage.getItem("premiumRestaurantCookies") === "accepted") {
   cookieBanner.classList.add("hidden");
 }
-
 acceptCookies.addEventListener("click", () => {
   localStorage.setItem("premiumRestaurantCookies", "accepted");
   cookieBanner.classList.add("hidden");
 });
-
 cookieSettings.addEventListener("click", (event) => {
   event.preventDefault();
   localStorage.removeItem("premiumRestaurantCookies");
@@ -108,28 +106,6 @@ document.querySelectorAll(".magnetic").forEach(button => {
   button.addEventListener("mouseleave", () => button.style.transform = "");
 });
 
-const counters = document.querySelectorAll("[data-count]");
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (!entry.isIntersecting) return;
-    const element = entry.target;
-    const target = parseFloat(element.dataset.count);
-    let current = 0;
-    const step = target / 70;
-    const timer = setInterval(() => {
-      current += step;
-      if (current >= target) {
-        element.textContent = target % 1 === 0 ? target.toLocaleString("de-DE") + (target > 90 ? "%" : "+") : target.toFixed(1) + "★";
-        clearInterval(timer);
-      } else {
-        element.textContent = target % 1 === 0 ? Math.floor(current).toLocaleString("de-DE") : current.toFixed(1);
-      }
-    }, 18);
-    counterObserver.unobserve(element);
-  });
-}, { threshold: 0.45 });
-counters.forEach((counter) => counterObserver.observe(counter));
-
 const premiumMenuData = {
   starter: [
     { icon: "🥂", name: "Aperitif Moment", desc: "Feiner Gruß aus der Küche mit saisonalen Akzenten.", price: "9,90 €", tag: "Signature" },
@@ -156,18 +132,6 @@ const premiumMenuData = {
 const menuGrid = document.getElementById("premiumMenuGrid");
 const premiumTabs = document.querySelectorAll(".premium-tab");
 
-function addMenuGlow() {
-  document.querySelectorAll(".premium-menu-card").forEach(card => {
-    card.addEventListener("mousemove", (event) => {
-      const rect = card.getBoundingClientRect();
-      const x = ((event.clientX - rect.left) / rect.width) * 100;
-      const y = ((event.clientY - rect.top) / rect.height) * 100;
-      card.style.setProperty("--x", `${x}%`);
-      card.style.setProperty("--y", `${y}%`);
-    });
-  });
-}
-
 function renderPremiumMenu(category) {
   menuGrid.classList.add("menu-changing");
   setTimeout(() => {
@@ -177,7 +141,6 @@ function renderPremiumMenu(category) {
         <div class="food-footer"><span>${item.tag}</span><strong>${item.price}</strong></div>
       </article>
     `).join("");
-    addMenuGlow();
     initTiltCards();
     menuGrid.classList.remove("menu-changing");
   }, 180);
@@ -230,62 +193,16 @@ lightboxClose.addEventListener("click", closeLightbox);
 lightbox.addEventListener("click", (event) => { if (event.target === lightbox) closeLightbox(); });
 document.addEventListener("keydown", (event) => { if (event.key === "Escape") closeLightbox(); });
 
-const reviews = [
-  { avatar: "M", name: "Max Mustermann", text: "“Ein außergewöhnlicher Abend. Das Ambiente, der Service und das Essen wirkten auf einem sehr hohen Niveau.”" },
-  { avatar: "S", name: "Sarah Beispiel", text: "“Schon beim Betreten fühlt sich alles hochwertig an. Die Gerichte waren perfekt angerichtet und der Service war aufmerksam.”" },
-  { avatar: "L", name: "Leon Gast", text: "“Die Website sollte genau dieses Gefühl vermitteln: elegant, vertrauenswürdig und besonders.”" }
-];
-
-let reviewIndex = 0;
-const reviewCard = document.getElementById("reviewCard");
-const reviewAvatar = document.getElementById("reviewAvatar");
-const reviewName = document.getElementById("reviewName");
-const reviewText = document.getElementById("reviewText");
-const prevReview = document.getElementById("prevReview");
-const nextReview = document.getElementById("nextReview");
-const reviewDots = document.getElementById("reviewDots");
-
-function renderDots() {
-  reviewDots.innerHTML = reviews.map((_, index) => `<button class="${index === reviewIndex ? "active" : ""}" data-index="${index}" aria-label="Bewertung ${index + 1}"></button>`).join("");
-  reviewDots.querySelectorAll("button").forEach(button => {
-    button.addEventListener("click", () => {
-      reviewIndex = Number(button.dataset.index);
-      renderReview();
-    });
-  });
-}
-
-function renderReview() {
-  reviewCard.classList.add("fade");
-  setTimeout(() => {
-    const review = reviews[reviewIndex];
-    reviewAvatar.textContent = review.avatar;
-    reviewName.textContent = review.name;
-    reviewText.textContent = review.text;
-    reviewCard.classList.remove("fade");
-    renderDots();
-  }, 220);
-}
-
-function next() {
-  reviewIndex = (reviewIndex + 1) % reviews.length;
-  renderReview();
-}
-
-function prev() {
-  reviewIndex = (reviewIndex - 1 + reviews.length) % reviews.length;
-  renderReview();
-}
-
-nextReview.addEventListener("click", next);
-prevReview.addEventListener("click", prev);
-renderDots();
-setInterval(next, 5200);
-
 const reservationForm = document.getElementById("reservationForm");
 const formNote = document.getElementById("formNote");
 
 reservationForm.addEventListener("submit", () => {
   formNote.textContent = "Reservierungsanfrage wird gesendet ...";
   formNote.classList.add("success");
+});
+
+document.querySelector(".newsletter-form").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const btn = event.currentTarget.querySelector("button");
+  btn.textContent = "Eingetragen ✓";
 });
