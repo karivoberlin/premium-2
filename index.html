@@ -3,61 +3,202 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Restaurant Premium V7 | Reservierung</title>
-  <meta name="description" content="Premium Restaurant Website V7 mit Luxus-Reservierung, Kontakt, Google Maps, FAQ, CTA und Footer." />
+  <title>Restaurant Premium V8 | Premium Polish</title>
+  <meta name="description" content="Restaurant Premium V8 mit Premium Polish, stärkeren Animationen, Partikeln, Page Transition, 3D Hover, Reservierung, Galerie und Bewertungen." />
+  <meta name="author" content="Karivo" />
+  <meta property="og:title" content="Restaurant Name | Premium Restaurant Website" />
+  <meta property="og:description" content="Fine Dining Website mit Reservierung, Galerie, Bewertungen und Premium Animationen." />
+  <meta property="og:type" content="website" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <div class="loader" id="loader"><div><span>R</span><p>Restaurant Name</p></div></div>
-  <div class="progress" id="progress"></div>
+  <div class="page-transition" id="pageTransition"></div>
+
+  <div class="loader" id="loader">
+    <div class="loader-card">
+      <span>R</span>
+      <p>Restaurant Name</p>
+      <div class="loader-line"></div>
+    </div>
+  </div>
+
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
   <div class="cursor-glow" id="cursorGlow"></div>
-  <div class="premium-bg"></div><div class="noise"></div>
+  <div class="premium-bg"></div>
+  <div class="noise"></div>
+  <div class="particles" id="particles"></div>
 
   <header class="premium-header" id="premiumHeader">
-    <a href="#start" class="brand"><span class="brand-icon">R</span><span><strong>Restaurant Name</strong><small>Fine Dining Experience</small></span></a>
+    <a href="#start" class="brand transition-link">
+      <span class="brand-icon">R</span>
+      <span>
+        <strong>Restaurant Name</strong>
+        <small>Fine Dining Experience</small>
+      </span>
+    </a>
+
     <nav class="premium-nav" id="premiumNav">
-      <a href="#start">Start</a><a href="#menu">Menü</a><a href="#gallery">Galerie</a><a href="#reviews">Bewertungen</a><a href="#reservation">Reservierung</a><a href="#contact">Kontakt</a>
+      <a href="#start">Start</a>
+      <a href="#menu">Menü</a>
+      <a href="#gallery">Galerie</a>
+      <a href="#reviews">Bewertungen</a>
+      <a href="#reservation">Reservierung</a>
+      <a href="#contact">Kontakt</a>
     </nav>
+
     <a href="#reservation" class="header-button">Tisch reservieren</a>
-    <button class="menu-button" id="menuButton" aria-label="Menü öffnen"><span></span><span></span></button>
+
+    <button class="menu-button" id="menuButton" aria-label="Menü öffnen">
+      <span></span>
+      <span></span>
+    </button>
   </header>
 
   <main>
     <section class="hero-premium" id="start">
-      <div class="hero-video-placeholder" id="heroParallax"></div><div class="hero-gradient"></div>
-      <div class="light-beam beam-one"></div><div class="light-beam beam-two"></div>
-      <div class="floating-shape shape-one"></div><div class="floating-shape shape-two"></div><div class="floating-shape shape-three"></div><div class="floating-shape shape-four"></div>
+      <div class="hero-video-placeholder" id="heroParallax"></div>
+      <div class="hero-gradient"></div>
+      <div class="premium-orb orb-one"></div>
+      <div class="premium-orb orb-two"></div>
+      <div class="light-beam beam-one"></div>
+      <div class="light-beam beam-two"></div>
+      <div class="floating-shape shape-one"></div>
+      <div class="floating-shape shape-two"></div>
+      <div class="floating-shape shape-three"></div>
+      <div class="floating-shape shape-four"></div>
+
       <div class="container hero-inner">
         <div class="hero-left reveal">
-          <p class="overline">Premium Reservierung</p><h1>Fine Dining, inszeniert wie ein Luxusfilm.</h1>
-          <p class="hero-text">V7 macht die Premium-Website komplett nutzbar: Luxus-Reservierung, Kontaktbereich, Google Maps, FAQ, CTA, Footer, Cookie-Banner und Back-to-Top.</p>
-          <div class="hero-actions"><a class="btn btn-gold" href="#reservation">Tisch reservieren</a><a class="btn btn-ghost" href="#menu">Menü ansehen</a></div>
-          <div class="premium-proof"><div><strong>4.9</strong><span>Rating</span></div><div><strong>500+</strong><span>Bewertungen</span></div><div><strong>98%</strong><span>Empfehlung</span></div></div>
+          <p class="overline">Premium Polish V8</p>
+          <h1>Eine Restaurantseite mit echtem Agentur-Look.</h1>
+          <p class="hero-text">
+            V8 bringt den Feinschliff: Page Transition, Partikel, Premium Cursor, stärkere
+            3D-Hover-Effekte, weichere Animationen, bessere Mobile-Optimierung und SEO-Feinschliff.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-gold magnetic" href="#reservation">Tisch reservieren</a>
+            <a class="btn btn-ghost magnetic" href="#gallery">Galerie ansehen</a>
+          </div>
+
+          <div class="premium-proof">
+            <div class="shine-card"><strong>4.9</strong><span>Google Style Rating</span></div>
+            <div class="shine-card"><strong>500+</strong><span>Bewertungen</span></div>
+            <div class="shine-card"><strong>98%</strong><span>Weiterempfehlung</span></div>
+          </div>
         </div>
-        <div class="hero-right reveal"><div class="luxury-card tilt-card"><div class="card-glow"></div><span>Signature Experience</span><h2>Chef's Table</h2><p>Ein exklusiver Bereich für Empfehlungen, Events oder private Dinner.</p><div class="luxury-meta"><strong>4.9★</strong><strong>Fine Dining</strong></div></div></div>
+
+        <div class="hero-right reveal">
+          <div class="luxury-card tilt-card shine-card">
+            <div class="card-glow"></div>
+            <span>Signature Experience</span>
+            <h2>Chef's Table</h2>
+            <p>Ein exklusiver Bereich für besondere Empfehlungen, Events oder private Dinner.</p>
+            <div class="luxury-meta">
+              <strong>4.9★</strong>
+              <strong>Fine Dining</strong>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="hero-bottom-strip"><div class="container strip-inner"><span>Private Dining</span><span>Seasonal Menu</span><span>Wine Pairing</span><span>Elegant Atmosphere</span></div></div>
+
+      <div class="hero-bottom-strip">
+        <div class="container strip-inner">
+          <span>Private Dining</span>
+          <span>Seasonal Menu</span>
+          <span>Wine Pairing</span>
+          <span>Elegant Atmosphere</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section polish-section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="overline">Premium Polish</p>
+          <h2>V8 fühlt sich glatter, teurer und hochwertiger an.</h2>
+          <p>Diese Version ergänzt keine riesigen neuen Bereiche, sondern verbessert die Wirkung der ganzen Website.</p>
+        </div>
+
+        <div class="polish-grid">
+          <article class="polish-card reveal tilt-card shine-card">
+            <span>01</span>
+            <h3>Page Transition</h3>
+            <p>Cinematic Seitengefühl beim Laden und internen Springen.</p>
+          </article>
+          <article class="polish-card reveal tilt-card shine-card">
+            <span>02</span>
+            <h3>Premium Cursor</h3>
+            <p>Goldener Cursor Glow mit kleinem Punkt für Luxuswirkung.</p>
+          </article>
+          <article class="polish-card reveal tilt-card shine-card">
+            <span>03</span>
+            <h3>Microinteractions</h3>
+            <p>Buttons, Karten und Bilder reagieren spürbar hochwertiger.</p>
+          </article>
+        </div>
+      </div>
     </section>
 
     <section class="section premium-menu-section" id="menu">
       <div class="container">
-        <div class="section-heading reveal"><p class="overline">Signature Menu</p><h2>Eine Speisekarte, die sich wie Fine Dining anfühlt.</h2><p>Animierte Kategorien, Premium Cards und Chef Specials.</p></div>
-        <div class="menu-showcase reveal">
-          <div class="chef-special tilt-card"><div class="special-image"></div><div class="special-content"><p class="overline">Chef Empfehlung</p><h3>Trüffel Pasta Signature</h3><p>Hausgemachte Pasta, cremige Trüffelreduktion, Parmesan und feine Kräuter.</p><div class="special-meta"><span>Signature Dish</span><strong>24,90 €</strong></div></div></div>
-          <div class="menu-control"><p class="overline">Kategorien</p><div class="premium-tabs"><button class="premium-tab active" data-category="starter">Starter</button><button class="premium-tab" data-category="main">Main Course</button><button class="premium-tab" data-category="dessert">Dessert</button><button class="premium-tab" data-category="drinks">Drinks</button></div></div>
+        <div class="section-heading reveal">
+          <p class="overline">Signature Menu</p>
+          <h2>Eine Speisekarte, die sich wie Fine Dining anfühlt.</h2>
+          <p>Animierte Kategorien, Premium Cards und Chef Specials.</p>
         </div>
+
+        <div class="menu-showcase reveal">
+          <div class="chef-special tilt-card shine-card">
+            <div class="special-image"></div>
+            <div class="special-content">
+              <p class="overline">Chef Empfehlung</p>
+              <h3>Trüffel Pasta Signature</h3>
+              <p>Hausgemachte Pasta, cremige Trüffelreduktion, Parmesan und feine Kräuter.</p>
+              <div class="special-meta">
+                <span>Signature Dish</span>
+                <strong>24,90 €</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-control shine-card">
+            <p class="overline">Kategorien</p>
+            <div class="premium-tabs">
+              <button class="premium-tab active" data-category="starter">Starter</button>
+              <button class="premium-tab" data-category="main">Main Course</button>
+              <button class="premium-tab" data-category="dessert">Dessert</button>
+              <button class="premium-tab" data-category="drinks">Drinks</button>
+            </div>
+          </div>
+        </div>
+
         <div class="premium-menu-grid reveal" id="premiumMenuGrid"></div>
       </div>
     </section>
 
     <section class="section gallery-section" id="gallery">
       <div class="container">
-        <div class="section-heading reveal"><p class="overline">Galerie</p><h2>Bilder, die das Restaurant verkaufen.</h2><p>Premium Galerie mit Filter, Masonry Layout und Lightbox.</p></div>
-        <div class="gallery-filter reveal"><button class="gallery-filter-btn active" data-filter="all">Alle</button><button class="gallery-filter-btn" data-filter="food">Food</button><button class="gallery-filter-btn" data-filter="interior">Ambiente</button><button class="gallery-filter-btn" data-filter="detail">Details</button></div>
-        <div class="masonry-gallery reveal">
+        <div class="section-heading reveal">
+          <p class="overline">Galerie</p>
+          <h2>Bilder, die das Restaurant verkaufen.</h2>
+          <p>Premium Galerie mit Filter, Masonry Layout, Lightbox und weicheren Übergängen.</p>
+        </div>
+
+        <div class="gallery-filter reveal">
+          <button class="gallery-filter-btn active" data-filter="all">Alle</button>
+          <button class="gallery-filter-btn" data-filter="food">Food</button>
+          <button class="gallery-filter-btn" data-filter="interior">Ambiente</button>
+          <button class="gallery-filter-btn" data-filter="detail">Details</button>
+        </div>
+
+        <div class="masonry-gallery reveal" id="masonryGallery">
           <button class="gallery-tile tile-large" data-category="interior" data-title="Eleganter Innenbereich" data-img="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=85"><span>Innenbereich</span></button>
           <button class="gallery-tile" data-category="food" data-title="Signature Dish" data-img="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=1600&q=85"><span>Signature Dish</span></button>
           <button class="gallery-tile tile-tall" data-category="detail" data-title="Bar Detail" data-img="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1600&q=85"><span>Bar Detail</span></button>
@@ -68,30 +209,195 @@
       </div>
     </section>
 
-    <section class="section reviews-section" id="reviews"><div class="container"><div class="section-heading reveal"><p class="overline">Bewertungen</p><h2>Vertrauen, bevor der Gast reserviert.</h2><p>Google-Style Bewertungen mit automatischem Slider.</p></div><div class="trust-grid reveal"><div class="trust-card"><strong data-count="4.9">0</strong><span>Durchschnitt</span></div><div class="trust-card"><strong data-count="527">0</strong><span>Bewertungen</span></div><div class="trust-card"><strong data-count="98">0</strong><span>Empfehlung</span></div></div><div class="review-stage reveal"><button class="review-arrow" id="prevReview">‹</button><article class="review-card tilt-card" id="reviewCard"><div class="review-top"><div class="review-avatar" id="reviewAvatar">M</div><div><h3 id="reviewName">Max Mustermann</h3><span>Google Bewertung · vor 2 Wochen</span></div></div><div class="review-stars">★★★★★</div><p id="reviewText">“Ein außergewöhnlicher Abend. Das Ambiente, der Service und das Essen wirkten auf einem sehr hohen Niveau.”</p></article><button class="review-arrow" id="nextReview">›</button></div><div class="review-dots" id="reviewDots"></div></div></section>
+    <section class="section reviews-section" id="reviews">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="overline">Bewertungen</p>
+          <h2>Vertrauen, bevor der Gast reserviert.</h2>
+          <p>Google-Style Bewertungen mit automatischem Slider und Trust-Kennzahlen.</p>
+        </div>
+
+        <div class="trust-grid reveal">
+          <div class="trust-card shine-card"><strong data-count="4.9">0</strong><span>Durchschnitt</span></div>
+          <div class="trust-card shine-card"><strong data-count="527">0</strong><span>Bewertungen</span></div>
+          <div class="trust-card shine-card"><strong data-count="98">0</strong><span>Weiterempfehlung</span></div>
+        </div>
+
+        <div class="review-stage reveal">
+          <button class="review-arrow" id="prevReview" aria-label="Vorherige Bewertung">‹</button>
+
+          <article class="review-card tilt-card shine-card" id="reviewCard">
+            <div class="review-top">
+              <div class="review-avatar" id="reviewAvatar">M</div>
+              <div>
+                <h3 id="reviewName">Max Mustermann</h3>
+                <span>Google Bewertung · vor 2 Wochen</span>
+              </div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+            <p id="reviewText">“Ein außergewöhnlicher Abend. Das Ambiente, der Service und das Essen wirkten auf einem sehr hohen Niveau.”</p>
+          </article>
+
+          <button class="review-arrow" id="nextReview" aria-label="Nächste Bewertung">›</button>
+        </div>
+
+        <div class="review-dots" id="reviewDots"></div>
+      </div>
+    </section>
 
     <section class="section reservation-section" id="reservation">
       <div class="container reservation-premium-grid">
-        <div class="reservation-copy reveal"><p class="overline">Reservierung</p><h2>Reservieren Sie Ihren besonderen Abend.</h2><p>Dieses Formular ist für Formspree vorbereitet. Ersetze später nur den Link im action-Attribut durch den echten Formspree-Link.</p><div class="reservation-benefits"><div><span>✨</span><strong>Premium Anfrage</strong><p>Hochwertiges Formular mit Floating Labels.</p></div><div><span>📩</span><strong>Formspree bereit</strong><p>Anfragen kommen direkt per E-Mail an.</p></div><div><span>📱</span><strong>Mobile optimiert</strong><p>Perfekt auf Smartphone, Tablet und Desktop.</p></div></div></div>
-        <form class="premium-form reveal" id="reservationForm" action="https://formspree.io/f/DEIN-FORMSPREE-LINK" method="POST">
-          <div class="form-row"><label><span>Name</span><input type="text" name="name" placeholder=" " required></label><label><span>Telefon</span><input type="tel" name="telefon" placeholder=" " required></label></div>
-          <div class="form-row"><label><span>E-Mail</span><input type="email" name="email" placeholder=" " required></label><label><span>Personen</span><input type="number" name="personen" min="1" placeholder=" " required></label></div>
-          <div class="form-row"><label><span>Datum</span><input type="date" name="datum" required></label><label><span>Uhrzeit</span><input type="time" name="uhrzeit" required></label></div>
-          <label><span>Nachricht</span><textarea name="nachricht" placeholder=" "></textarea></label>
-          <button class="btn btn-gold" type="submit">Tisch reservieren</button><p class="form-note" id="formNote">Demo-Hinweis: Für echte Anfragen Formspree-Link ersetzen.</p>
+        <div class="reservation-copy reveal">
+          <p class="overline">Reservierung</p>
+          <h2>Reservieren Sie Ihren besonderen Abend.</h2>
+          <p>Das Formular ist für Formspree vorbereitet. Ersetze später nur den Link im action-Attribut.</p>
+
+          <div class="reservation-benefits">
+            <div class="shine-card"><span>✨</span><strong>Premium Anfrage</strong><p>Hochwertiges Formular mit Floating Labels.</p></div>
+            <div class="shine-card"><span>📩</span><strong>Formspree bereit</strong><p>Anfragen kommen direkt per E-Mail an.</p></div>
+            <div class="shine-card"><span>📱</span><strong>Mobile optimiert</strong><p>Perfekt auf Smartphone, Tablet und Desktop.</p></div>
+          </div>
+        </div>
+
+        <form class="premium-form reveal shine-card" id="reservationForm" action="https://formspree.io/f/DEIN-FORMSPREE-LINK" method="POST">
+          <div class="form-row">
+            <label><input type="text" name="name" placeholder=" " required><span>Name</span></label>
+            <label><input type="tel" name="telefon" placeholder=" " required><span>Telefon</span></label>
+          </div>
+
+          <div class="form-row">
+            <label><input type="email" name="email" placeholder=" " required><span>E-Mail</span></label>
+            <label><input type="number" name="personen" min="1" placeholder=" " required><span>Personen</span></label>
+          </div>
+
+          <div class="form-row">
+            <label><input type="date" name="datum" required><span>Datum</span></label>
+            <label><input type="time" name="uhrzeit" required><span>Uhrzeit</span></label>
+          </div>
+
+          <label class="full-label"><textarea name="nachricht" placeholder=" "></textarea><span>Nachricht</span></label>
+
+          <button class="btn btn-gold magnetic" type="submit">Tisch reservieren</button>
+          <p class="form-note" id="formNote">Demo-Hinweis: Für echte Anfragen Formspree-Link ersetzen.</p>
         </form>
       </div>
     </section>
 
-    <section class="section contact-map-section" id="contact"><div class="container contact-map-grid"><div class="premium-contact-card reveal"><p class="overline">Kontakt</p><h2>Besuchen Sie uns.</h2><div class="contact-lines"><p><strong>Adresse</strong><span>Musterstraße 1, 12345 Berlin</span></p><p><strong>Telefon</strong><span>030 12345678</span></p><p><strong>E-Mail</strong><span>kontakt@restaurant.de</span></p></div><div class="social-row"><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">TikTok</a><a href="#">WhatsApp</a></div></div><div class="hours-premium-card reveal"><p class="overline">Öffnungszeiten</p><ul><li><span>Montag</span><strong>Ruhetag</strong></li><li><span>Dienstag - Freitag</span><strong>12:00 - 22:00</strong></li><li><span>Samstag</span><strong>12:00 - 23:00</strong></li><li><span>Sonntag</span><strong>12:00 - 21:00</strong></li></ul></div></div><div class="container map-premium reveal"><iframe title="Google Maps" src="https://www.google.com/maps?q=Berlin&output=embed" loading="lazy"></iframe><div class="map-overlay-card"><strong>Restaurant Name</strong><span>Musterstraße 1, 12345 Berlin</span><a class="btn btn-gold" href="https://www.google.com/maps?q=Berlin" target="_blank" rel="noopener">Route planen</a></div></div></section>
+    <section class="section contact-map-section" id="contact">
+      <div class="container contact-map-grid">
+        <div class="premium-contact-card reveal shine-card">
+          <p class="overline">Kontakt</p>
+          <h2>Besuchen Sie uns.</h2>
 
-    <section class="section faq-section"><div class="container"><div class="section-heading reveal"><p class="overline">FAQ</p><h2>Häufige Fragen elegant beantwortet.</h2></div><div class="faq-list reveal"><details><summary>Kann ich online reservieren?</summary><p>Ja, über das Reservierungsformular kann direkt eine Anfrage gesendet werden.</p></details><details><summary>Gibt es vegetarische Gerichte?</summary><p>Ja, die Speisekarte kann später individuell angepasst werden.</p></details><details><summary>Kann man private Feiern buchen?</summary><p>Ja, Events, Firmenfeiern und Geburtstage können eingetragen werden.</p></details><details><summary>Gibt es eine Weinbegleitung?</summary><p>Dieser Text kann später je nach Angebot ersetzt werden.</p></details><details><summary>Ist Kartenzahlung möglich?</summary><p>Die Antwort kann später mit echten Kundeninfos angepasst werden.</p></details><details><summary>Wo kann man parken?</summary><p>Hier können Parkmöglichkeiten oder Anfahrtsinformationen stehen.</p></details></div></div></section>
-    <section class="premium-cta"><div class="container premium-cta-inner reveal"><p class="overline">Jetzt erleben</p><h2>Reservieren Sie jetzt Ihren Tisch.</h2><p>Ein starker Abschlussbereich, der Besucher zur Reservierung motiviert.</p><a class="btn btn-gold" href="#reservation">Reservierung starten</a></div></section>
+          <div class="contact-lines">
+            <p><strong>Adresse</strong><span>Musterstraße 1, 12345 Berlin</span></p>
+            <p><strong>Telefon</strong><span>030 12345678</span></p>
+            <p><strong>E-Mail</strong><span>kontakt@restaurant.de</span></p>
+          </div>
+
+          <div class="social-row">
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+            <a href="#">TikTok</a>
+            <a href="#">WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="hours-premium-card reveal shine-card">
+          <p class="overline">Öffnungszeiten</p>
+          <ul>
+            <li><span>Montag</span><strong>Ruhetag</strong></li>
+            <li><span>Dienstag - Freitag</span><strong>12:00 - 22:00</strong></li>
+            <li><span>Samstag</span><strong>12:00 - 23:00</strong></li>
+            <li><span>Sonntag</span><strong>12:00 - 21:00</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="container map-premium reveal shine-card">
+        <iframe title="Google Maps" src="https://www.google.com/maps?q=Berlin&output=embed" loading="lazy"></iframe>
+        <div class="map-overlay-card">
+          <strong>Restaurant Name</strong>
+          <span>Musterstraße 1, 12345 Berlin</span>
+          <a class="btn btn-gold" href="https://www.google.com/maps?q=Berlin" target="_blank" rel="noopener">Route planen</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq-section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="overline">FAQ</p>
+          <h2>Häufige Fragen elegant beantwortet.</h2>
+        </div>
+
+        <div class="faq-list reveal">
+          <details><summary>Kann ich online reservieren?</summary><p>Ja, über das Reservierungsformular kann direkt eine Anfrage gesendet werden.</p></details>
+          <details><summary>Gibt es vegetarische Gerichte?</summary><p>Ja, die Speisekarte kann später individuell angepasst werden.</p></details>
+          <details><summary>Kann man private Feiern buchen?</summary><p>Ja, dieser Bereich kann später für Events, Firmenfeiern und Geburtstage angepasst werden.</p></details>
+          <details><summary>Gibt es eine Weinbegleitung?</summary><p>Dieser Text kann später je nach Angebot ersetzt werden.</p></details>
+          <details><summary>Ist Kartenzahlung möglich?</summary><p>Die Antwort kann später mit echten Kundeninformationen angepasst werden.</p></details>
+          <details><summary>Wo kann man parken?</summary><p>Hier können später Parkmöglichkeiten oder Anfahrtsinformationen stehen.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="premium-cta">
+      <div class="container premium-cta-inner reveal">
+        <p class="overline">Jetzt erleben</p>
+        <h2>Reservieren Sie jetzt Ihren Tisch.</h2>
+        <p>Ein starker Abschlussbereich, der Besucher zur Reservierung motiviert.</p>
+        <a class="btn btn-gold magnetic" href="#reservation">Reservierung starten</a>
+      </div>
+    </section>
   </main>
 
-  <footer class="premium-footer"><div class="container footer-grid"><div><strong>Restaurant Name</strong><p>Karivo Restaurant Premium Vorlage — V7 Reservierung.</p></div><div><h4>Navigation</h4><a href="#start">Start</a><a href="#menu">Menü</a><a href="#gallery">Galerie</a><a href="#reservation">Reservierung</a></div><div><h4>Kontakt</h4><a href="tel:+493012345678">030 12345678</a><a href="mailto:kontakt@restaurant.de">kontakt@restaurant.de</a><a href="#">Musterstraße 1</a></div><div><h4>Rechtliches</h4><a href="#">Impressum</a><a href="#">Datenschutz</a><a href="#" id="cookieSettings">Cookie Einstellungen</a></div></div></footer>
-  <button class="back-to-top" id="backToTop" aria-label="Nach oben">↑</button><div class="cookie-banner" id="cookieBanner"><p>Diese Website verwendet Cookies für eine bessere Nutzererfahrung.</p><button id="acceptCookies">Akzeptieren</button></div>
-  <div class="lightbox" id="lightbox"><button class="lightbox-close" id="lightboxClose">×</button><div class="lightbox-content"><img id="lightboxImage" src="" alt="Galeriebild"><p id="lightboxTitle"></p></div></div>
+  <footer class="premium-footer final-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>Restaurant Name</strong>
+        <p>Karivo Restaurant Premium Vorlage — V8 Premium Polish.</p>
+      </div>
+
+      <div>
+        <h4>Navigation</h4>
+        <a href="#start">Start</a>
+        <a href="#menu">Menü</a>
+        <a href="#gallery">Galerie</a>
+        <a href="#reservation">Reservierung</a>
+      </div>
+
+      <div>
+        <h4>Kontakt</h4>
+        <a href="tel:+493012345678">030 12345678</a>
+        <a href="mailto:kontakt@restaurant.de">kontakt@restaurant.de</a>
+        <a href="#">Musterstraße 1</a>
+      </div>
+
+      <div>
+        <h4>Rechtliches</h4>
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+        <a href="#" id="cookieSettings">Cookie Einstellungen</a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Nach oben">↑</button>
+
+  <div class="cookie-banner" id="cookieBanner">
+    <p>Diese Website verwendet Cookies für eine bessere Nutzererfahrung.</p>
+    <button id="acceptCookies">Akzeptieren</button>
+  </div>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Galerie schließen">×</button>
+    <div class="lightbox-content">
+      <img id="lightboxImage" src="" alt="Galeriebild">
+      <p id="lightboxTitle"></p>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
